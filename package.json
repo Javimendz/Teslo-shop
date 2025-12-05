@@ -31,8 +31,12 @@
     "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
+<<<<<<< HEAD
     "typeorm": "^0.3.27",
     "uuid": "^13.0.0"
+=======
+    "typeorm": "^0.3.27"
+>>>>>>> a934d5a9e9047fa248f6766e2aecee74fe49883e
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -44,7 +48,10 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^22.10.7",
     "@types/supertest": "^6.0.2",
+<<<<<<< HEAD
     "@types/uuid": "^11.0.0",
+=======
+>>>>>>> a934d5a9e9047fa248f6766e2aecee74fe49883e
     "globals": "^16.0.0",
     "jest": "^30.0.0",
     "source-map-support": "^0.5.21",

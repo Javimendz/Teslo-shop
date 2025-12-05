@@ -4,9 +4,12 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
 import { Repository } from 'typeorm';
+<<<<<<< HEAD
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import {validate as isUUID} from 'uuid'
 import { title } from 'process';
+=======
+>>>>>>> a934d5a9e9047fa248f6766e2aecee74fe49883e
 
 @Injectable()
 export class ProductsService {
@@ -51,6 +54,7 @@ export class ProductsService {
 
 }
 
+<<<<<<< HEAD
   findAll(paginationDto: PaginationDto) {
     
       const {limit = 10, offset=0 } = paginationDto;
@@ -88,10 +92,26 @@ export class ProductsService {
       throw new NotFoundException(`Product with ${term} not found`)
 
     return product;
+=======
+  findAll() {
+    
+    return this.ProductRepository.find();
+
+  }
+
+  async findOne(id: string) {
+   
+    const product = await this.ProductRepository.findOneBy({id})
+    if(!product)
+        throw new NotFoundException(`Product with id ${id} not found`)
+      return product
+
+>>>>>>> a934d5a9e9047fa248f6766e2aecee74fe49883e
   }
 
   async update(id: string, updateProductDto: UpdateProductDto) {
 
+<<<<<<< HEAD
    
     const product = await this.ProductRepository.preload({
       id,
@@ -109,6 +129,17 @@ export class ProductsService {
       this.handleException(error)
     }
     return  product
+=======
+    // const product = await this.ProductRepository.preload({
+    //   id,
+    //   ...updateProductDto,
+
+    // });
+
+    // if(!product)
+    //   this.handleException('Product not found')
+    // return this.ProductRepository.save(product);
+>>>>>>> a934d5a9e9047fa248f6766e2aecee74fe49883e
   }
 
   async remove(id: string) {
