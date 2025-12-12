@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import { IsArray } from "class-validator";
-import {BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-=======
-import {BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
->>>>>>> a934d5a9e9047fa248f6766e2aecee74fe49883e
+import {BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { UUID } from "typeorm/driver/mongodb/bson.typings.js";
+import { ProductImage } from "./product-image.entity";
 
 @Entity()
 export class Product {
@@ -50,7 +47,6 @@ export class Product {
     @Column('text')
     gender:string;
 
-<<<<<<< HEAD
     @Column('text',{
         array: true,
         default: []
@@ -58,8 +54,17 @@ export class Product {
     })
     tags: string[]
 
-=======
->>>>>>> a934d5a9e9047fa248f6766e2aecee74fe49883e
+
+    @OneToMany(
+
+        () => ProductImage,
+        (productImage) => productImage.product ,
+        {cascade: true, eager: true}
+        
+    )
+    images?: ProductImage[];
+    
+
     @BeforeInsert()
     checkSlugInsert(){
 
@@ -80,7 +85,6 @@ export class Product {
         
     }
 
-<<<<<<< HEAD
     @BeforeUpdate()
     checkSlugUpdate(){
 
@@ -98,6 +102,4 @@ export class Product {
 
     }
 
-=======
->>>>>>> a934d5a9e9047fa248f6766e2aecee74fe49883e
 }
