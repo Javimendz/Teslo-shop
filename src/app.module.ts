@@ -4,7 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
 import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
+<<<<<<< HEAD
 import { AuthModule } from './auth/auth.module';
+=======
+import { FilesModule } from './files/files.module';
+>>>>>>> 06867ed7af012106ba3468e4da8258b61f8090d5
 
 
 @Module({
@@ -30,7 +34,11 @@ import { AuthModule } from './auth/auth.module';
 
     SeedModule,
 
+<<<<<<< HEAD
     AuthModule,
+=======
+    FilesModule,
+>>>>>>> 06867ed7af012106ba3468e4da8258b61f8090d5
 
 
   ],

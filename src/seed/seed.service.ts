@@ -13,6 +13,7 @@ export class SeedService {
 
   async runSeed(){
 
+    await this.insertNewProducts();
     return 'SEED EXECUTED'
   }
 
@@ -21,6 +22,7 @@ export class SeedService {
     //this.productsService.deleteAllProducts();
    await this.productsService.deleteAllProducts();
 
+<<<<<<< HEAD
     const products = initialData.products;
 
     const inserPromises = [];
@@ -34,6 +36,14 @@ export class SeedService {
     const  results = await Promise.all(inserPromises);
 
 
+=======
+   const products = initialData.products;
+   const insertPromises = [];
+   products.forEach( product => {
+    insertPromises.push(this.productsService.create(product))
+   })
+     await Promise.all(insertPromises)
+>>>>>>> 06867ed7af012106ba3468e4da8258b61f8090d5
     return true;
 
   }
