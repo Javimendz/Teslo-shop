@@ -9,43 +9,27 @@ import { initialData } from './data/seed-data';
 @Injectable()
 export class SeedService {
 
-    constructor( private readonly productsService: ProductsService){}
+   constructor(private readonly productsService: ProductsService) {}
 
-  async runSeed(){
-
+  async runSeed() {
     await this.insertNewProducts();
-    return 'SEED EXECUTED'
+    return 'SEED EXECUTED';
   }
 
-  private async insertNewProducts(){
+  private async insertNewProducts() {
+    await this.productsService.deleteAllProducts();
 
-    //this.productsService.deleteAllProducts();
-   await this.productsService.deleteAllProducts();
-
-<<<<<<< HEAD
     const products = initialData.products;
 
-    const inserPromises = [];
+    // 1. Map each product to a Create Promise
+    // TypeScript will automatically infer this as Promise<Product>[]
+    const insertPromises = products.map(product => 
+      this.productsService.create(product)
+    );
 
-    products.forEach(product =>{
+    // 2. Execute all promises in parallel
+    await Promise.all(insertPromises);
 
-      inserPromises.push(this.productsService.create(product))
-
-    });
-
-    const  results = await Promise.all(inserPromises);
-
-
-=======
-   const products = initialData.products;
-   const insertPromises = [];
-   products.forEach( product => {
-    insertPromises.push(this.productsService.create(product))
-   })
-     await Promise.all(insertPromises)
->>>>>>> 06867ed7af012106ba3468e4da8258b61f8090d5
     return true;
-
   }
-
 }
